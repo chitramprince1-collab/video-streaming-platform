@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamSphere</title><!-- Google Font --><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    background:#181818;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:1.6rem;
+    font-weight:700;
+    color:#ff3b30;
+}
+
+.search-box input{
+    width:300px;
+    max-width:100%;
+    padding:10px;
+    border:none;
+    border-radius:25px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    height:65vh;
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.7)),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+}
+
+.hero-content h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    max-width:600px;
+    color:#ddd;
+    margin-bottom:20px;
+}
+
+.hero-content button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#ff3b30;
+    color:white;
+    cursor:pointer;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    padding:30px 5% 15px;
+    font-size:1.5rem;
+}
+
+/* =========================
+   VIDEO GRID
+========================= */
+
+.video-grid{
+    padding:0 5% 40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+/* =========================
+   VIDEO CARD
+========================= */
+
+.card{
+    background:#1b1b1b;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.card-content p{
+    color:#aaa;
+    font-size:.9rem;
+    margin-bottom:10px;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.actions button{
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.like{
+    background:#ff3b30;
+    color:white;
+}
+
+.watch{
+    background:#2d88ff;
+    color:white;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-content{
+    background:#1e1e1e;
+    width:100%;
+    max-width:600px;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+}
+
+.modal-content h2{
+    margin-bottom:15px;
+}
+
+.close-btn{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#ff3b30;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#181818;
+    color:#aaa;
+}
+
+</style></head>
+<body><!-- ======================
+     NAVIGATION BAR
+====================== --><nav>
+    <div class="logo">StreamSphere</div><div class="search-box">
+    <input type="text" placeholder="Search videos...">
+</div>
+
+</nav><!-- ======================
+     HERO SECTION
+====================== --><section class="hero"><div class="hero-content">
+
+    <h1>The Last Kingdom</h1>
+
+    <p>
+        Explore an epic journey through battles,
+        kingdoms and legends.
+    </p>
+
+    <button onclick="openModal('The Last Kingdom')">
+        ▶ Watch Now
+    </button>
+
+</div>
+
+</section><!-- ======================
+     TRENDING SECTION
+====================== --><h2 class="section-title">Trending Videos</h2><div class="video-grid"><div class="card">
+    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200">
+    <div class="card-content">
+        <h3>Space Explorer</h3>
+        <p>1.2M Views • 12 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Space Explorer')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+    <div class="card-content">
+        <h3>Wild Nature</h3>
+        <p>890K Views • 18 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Wild Nature')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200">
+    <div class="card-content">
+        <h3>Future Tech</h3>
+        <p>2.1M Views • 15 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Future Tech')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200">
+    <div class="card-content">
+        <h3>Cyber World</h3>
+        <p>1.5M Views • 10 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Cyber World')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200">
+    <div class="card-content">
+        <h3>Digital Creator</h3>
+        <p>750K Views • 20 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Digital Creator')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200">
+    <div class="card-content">
+        <h3>Comedy Nights</h3>
+        <p>1.8M Views • 14 min</p>
+
+        <div class="actions">
+            <button class="like">❤️ Like</button>
+            <button class="watch" onclick="openModal('Comedy Nights')">▶ Watch</button>
+        </div>
+    </div>
+</div>
+
+</div><!-- ======================
+     VIDEO MODAL
+====================== --><div class="modal" id="videoModal"><div class="modal-content">
+
+    <h2 id="videoTitle">Video Title</h2>
+
+    <p>
+        This is where video details or a player
+        would appear in a full application.
+    </p>
+
+    <button class="close-btn" onclick="closeModal()">
+        Close
+    </button>
+
+</div>
+
+</div><!-- ======================
+     FOOTER
+====================== --><footer>
+    © 2026 StreamSphere | Video Streaming Platform
+</footer><script>
+
+/* =========================
+   OPEN VIDEO MODAL
+========================= */
+
+function openModal(title){
+
+    document.getElementById("videoTitle").innerText = title;
+
+    document.getElementById("videoModal").style.display = "flex";
+}
+
+/* =========================
+   CLOSE VIDEO MODAL
+========================= */
+
+function closeModal(){
+
+    document.getElementById("videoModal").style.display = "none";
+}
+
+/* =========================
+   CLOSE MODAL WHEN CLICKING
+   OUTSIDE THE BOX
+========================= */
+
+window.onclick = function(event){
+
+    const modal =
+    document.getElementById("videoModal");
+
+    if(event.target === modal){
+
+        modal.style.display = "none";
+    }
+}
+
+</script></body>
+</html>
